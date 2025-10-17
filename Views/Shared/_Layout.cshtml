@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Adidas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="@Url.Action("Index", "Home")">
+                <img src="https://i.ibb.co/DD0jKKPk/vecteezy-adidas-logo-black-symbol-clothes-design-icon-abstract-10994239.jpg" alt="Adidas Logo">
+            </a>
+        </div>
+
+        <nav class="main-menu">
+            <ul>
+                <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+
+                <li class="has-megamenu">
+                    <a href="#">Giày</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-inner">
+                            <div class="mega-menu-column">
+                                <h4>GIÀY HÀNG MỚI VỀ</h4>
+                                <ul>
+                                    <li><a href="#">SL 72</a></li>
+                                    <li><a href="#">Stan Smith</a></li>
+                                    <li><a href="#">Low Profile Collection</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>TRENDING SHOES</h4>
+                                <ul>
+                                    <li><a href="#">Every Day Running</a></li>
+                                    <li><a href="#">Tiếp sức đường chạy</a></li>
+                                    <li><a href="#">Race to win</a></li>
+                                    <li><a href="#">Giày đi bộ</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>CÁC DÒNG NỔI BẬT</h4>
+                                <ul>
+                                    <li><a href="#">Samba</a></li>
+                                    <li><a href="#">Gazelle</a></li>
+                                    <li><a href="#">Campus</a></li>
+                                    <li><a href="#">Superstar</a></li>
+                                    <li><a href="#">Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="has-megamenu">
+                    <a href="#">Nam</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-inner">
+                            <div class="mega-menu-column">
+                                <h4>Nổi Bật</h4>
+                                <ul>
+                                    <li><a href="#">Hàng Mới Về</a></li>
+                                    <li><a href="#">Độc quyền hội viên</a></li>
+                                    <li><a href="#">Best Sellers</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Giày</h4>
+                                <ul>
+                                    <li><a href="#">Originals</a></li>
+                                    <li><a href="#">Bóng đá</a></li>
+                                    <li><a href="#">Chạy bộ</a></li>
+                                    <li><a href="#">Tập luyện</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Quần Áo</h4>
+                                <ul>
+                                    <li><a href="#">Áo thun & Áo polo</a></li>
+                                    <li><a href="#">Áo Hoodie</a></li>
+                                    <li><a href="#">Bộ đồ thể thao</a></li>
+                                    <li><a href="#">Quần dài</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column promo-column">
+                                <a href="#">
+                                    <img src="https://i.ibb.co/GfJ0F74w/trai-nghiem-giay-adidas.png" alt="Promo">
+                                    <span class="promo-text">EVO SL. FEEL FAST.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="has-megamenu">
+                    <a href="#">Nữ</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-inner">
+                            <div class="mega-menu-column">
+                                <h4>Nổi Bật</h4>
+                                <ul>
+                                    <li><a href="#">Hàng Mới Về</a></li>
+                                    <li><a href="#">Độc quyền hội viên</a></li>
+                                    <li><a href="#">Must Haves</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Giày</h4>
+                                <ul>
+                                    <li><a href="#">Originals</a></li>
+                                    <li><a href="#">Sneakers</a></li>
+                                    <li><a href="#">Chạy bộ</a></li>
+                                    <li><a href="#">Dép & Dép xỏ ngón</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Quần Áo</h4>
+                                <ul>
+                                    <li><a href="#">Áo thun & croptop</a></li>
+                                    <li><a href="#">Áo Hoodie</a></li>
+                                    <li><a href="#">Quần Leggings</a></li>
+                                    <li><a href="#">Váy & Đầm</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column promo-column">
+                                <a href="#">
+                                    <img src="https://i.ibb.co/k2PKnWx5/french-women-adidas-sneakers-307923-1687375452321-main.jpg" alt="Promo">
+                                    <span class="promo-text">SAMBA REIMAGINED</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+                <button id="search-button"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="cart">
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-promo">
+                <h3>TRỞ THÀNH HỘI VIÊN & HƯỞNG ƯU ĐÃI 10%</h3>
+                <a href="#" class="btn-promo">ĐĂNG KÝ MIỄN PHÍ &rarr;</a>
+            </div>
+
+            <div class="footer-main">
+                <div class="footer-column">
+                    <h4>SẢN PHẨM</h4>
+                    <ul>
+                        <li><a href="#">Giày</a></li>
+                        <li><a href="#">Quần áo</a></li>
+                        <li><a href="#">Phụ kiện</a></li>
+                        <li><a href="#">Hàng Mới Về</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>THỂ THAO</h4>
+                    <ul>
+                        <li><a href="#">Chạy</a></li>
+                        <li><a href="#">Gym & Training</a></li>
+                        <li><a href="#">Bóng đá</a></li>
+                        <li><a href="#">Bóng Rổ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>THÔNG TIN VỀ CÔNG TY</h4>
+                    <ul>
+                        <li><a href="#">Giới Thiệu Về Chúng Tôi</a></li>
+                        <li><a href="#">Cơ Hội Nghề Nghiệp</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>HỖ TRỢ</h4>
+                    <ul>
+                        <li><a href="#">Trợ Giúp</a></li>
+                        <li><a href="#">Giao Hàng</a></li>
+                        <li><a href="#">Trả Hàng & Hoàn Tiền</a></li>
+                        <li><a href="#">Khuyến mãi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>THEO DÕI CHÚNG TÔI</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; @DateTime.Now.Year - AD-Store. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+</body>
+</html>
