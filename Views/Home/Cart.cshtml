@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Sử dụng layout chung
+    ViewBag.Title = "Giỏ Hàng Của Bạn"; // Đặt tiêu đề
+}
+
+<div class="container cart-page-container">
+    <h2>Giỏ Hàng Của Bạn</h2>
+
+    <div class="cart-table-container">
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="https://i.ibb.co/d4zQqdLs/download.jpg" alt="Sản phẩm 1"></td>
+                    <td>Adidas Superstar XLG</td>
+                    <td>2.800.000₫</td>
+                    <td>
+                        <div class="quantity-controls">
+                            <button class="decrease-qty">-</button>
+                            <span class="item-quantity">1</span>
+                            <button class="increase-qty">+</button>
+                        </div>
+                    </td>
+                    <td class="item-total">2.800.000₫</td>
+                    <td><button class="remove-btn">Xóa</button></td>
+                </tr>
+                <tr>
+                    <td><img src="https://i.ibb.co/rf5vXPQy/download-1.jpg" alt="Sản phẩm 2"></td>
+                    <td>Adidas Samba OG</td>
+                    <td>3.200.000₫</td>
+                    <td>
+                        <div class="quantity-controls">
+                            <button class="decrease-qty">-</button>
+                            <span class="item-quantity">2</span>
+                            <button class="increase-qty">+</button>
+                        </div>
+                    </td>
+                    <td class="item-total">6.400.000₫</td>
+                    <td><button class="remove-btn">Xóa</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cart-summary">
+        <div class="cart-total">
+            <strong>Tổng cộng: <span id="totalPrice">9.200.000₫</span></strong>
+        </div>
+        <a href="#" class="checkout-btn">Thanh Toán</a>
+    </div>
+</div>

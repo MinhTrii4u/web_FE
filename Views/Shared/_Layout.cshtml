@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using web_FE.Models 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,6 +15,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
+    @{
+        // Lấy thông tin user từ Session
+        var user = Session["user"] as User;
+    }
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>ƯU ĐÃI THÀNH VIÊN - MIỄN PHÍ VẬN CHUYỂN TOÀN QUỐC</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#">Trợ giúp</a>
+                <a href="@Url.Action("Orders", "Account")">Đơn hàng của tôi</a>
+
+                @if (user != null) // Nếu đã đăng nhập
+                {
+                    <a href="@Url.Action("Account", "Account")">Xin chào, @user.Name</a>
+                    <a href="@Url.Action("Logout", "Account")">Đăng xuất</a>
+                }
+                else // Nếu chưa đăng nhập
+                {
+                    <a href="@Url.Action("Login", "Account")">Đăng ký/Đăng nhập</a>
+                }
+            </div>
+        </div>
+    </div>
     <header>
         <div class="logo">
             <a href="@Url.Action("Index", "Home")">
@@ -22,7 +48,7 @@
         </div>
 
         <nav class="main-menu">
-            <ul>
+             <ul>
                 <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
 
                 <li class="has-megamenu">
@@ -30,30 +56,30 @@
                     <div class="mega-menu">
                         <div class="mega-menu-inner">
                             <div class="mega-menu-column">
-                                <h4>GIÀY HÀNG MỚI VỀ</h4>
+                                <h4>Nổi Bật</h4>
                                 <ul>
-                                    <li><a href="#">SL 72</a></li>
-                                    <li><a href="#">Stan Smith</a></li>
-                                    <li><a href="#">Low Profile Collection</a></li>
+                                    <li><a href="#">Hàng Mới Về</a></li>
+                                    <li><a href="#">Sản phẩm bán chạy</a></li>
+                                    <li><a href="#">Độc quyền hội viên</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
-                                <h4>TRENDING SHOES</h4>
-                                <ul>
-                                    <li><a href="#">Every Day Running</a></li>
-                                    <li><a href="#">Tiếp sức đường chạy</a></li>
-                                    <li><a href="#">Race to win</a></li>
-                                    <li><a href="#">Giày đi bộ</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>CÁC DÒNG NỔI BẬT</h4>
+                                <h4>Phong Cách</h4>
                                 <ul>
                                     <li><a href="#">Samba</a></li>
                                     <li><a href="#">Gazelle</a></li>
-                                    <li><a href="#">Campus</a></li>
                                     <li><a href="#">Superstar</a></li>
+                                    <li><a href="#">Stan Smith</a></li>
                                     <li><a href="#">Forum</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Thể Thao</h4>
+                                <ul>
+                                    <li><a href="#">Chạy bộ</a></li>
+                                    <li><a href="#">Bóng đá</a></li>
+                                    <li><a href="#">Tập luyện</a></li>
+                                    <li><a href="#">Bóng rổ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,34 +93,33 @@
                             <div class="mega-menu-column">
                                 <h4>Nổi Bật</h4>
                                 <ul>
-                                    <li><a href="#">Hàng Mới Về</a></li>
-                                    <li><a href="#">Độc quyền hội viên</a></li>
+                                    <li><a href="#">Hàng Mới Về (Nam)</a></li>
                                     <li><a href="#">Best Sellers</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
-                                <h4>Giày</h4>
+                                <h4>Giày Nam</h4>
                                 <ul>
                                     <li><a href="#">Originals</a></li>
                                     <li><a href="#">Bóng đá</a></li>
                                     <li><a href="#">Chạy bộ</a></li>
-                                    <li><a href="#">Tập luyện</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
-                                <h4>Quần Áo</h4>
+                                <h4>Phụ Kiện Nam</h4>
                                 <ul>
-                                    <li><a href="#">Áo thun & Áo polo</a></li>
-                                    <li><a href="#">Áo Hoodie</a></li>
-                                    <li><a href="#">Bộ đồ thể thao</a></li>
-                                    <li><a href="#">Quần dài</a></li>
+                                    <li><a href="#">Tất Cả Túi</a></li>
+                                    <li><a href="#">Tất</a></li>
+                                    <li><a href="#">Mũ Lưỡi Trai & Đội Đầu</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-menu-column promo-column">
-                                <a href="#">
-                                    <img src="https://i.ibb.co/GfJ0F74w/trai-nghiem-giay-adidas.png" alt="Promo">
-                                    <span class="promo-text">EVO SL. FEEL FAST.</span>
-                                </a>
+                            <div class="mega-menu-column">
+                                <h4>Thể Thao Nam</h4>
+                                <ul>
+                                    <li><a href="#">Bóng đá</a></li>
+                                    <li><a href="#">Chạy</a></li>
+                                    <li><a href="#">Tập luyện</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -107,34 +132,33 @@
                             <div class="mega-menu-column">
                                 <h4>Nổi Bật</h4>
                                 <ul>
-                                    <li><a href="#">Hàng Mới Về</a></li>
+                                    <li><a href="#">Hàng Mới Về (Nữ)</a></li>
                                     <li><a href="#">Độc quyền hội viên</a></li>
-                                    <li><a href="#">Must Haves</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
-                                <h4>Giày</h4>
+                                <h4>Giày Nữ</h4>
                                 <ul>
                                     <li><a href="#">Originals</a></li>
                                     <li><a href="#">Sneakers</a></li>
                                     <li><a href="#">Chạy bộ</a></li>
-                                    <li><a href="#">Dép & Dép xỏ ngón</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
-                                <h4>Quần Áo</h4>
+                                <h4>Phụ Kiện Nữ</h4>
                                 <ul>
-                                    <li><a href="#">Áo thun & croptop</a></li>
-                                    <li><a href="#">Áo Hoodie</a></li>
-                                    <li><a href="#">Quần Leggings</a></li>
-                                    <li><a href="#">Váy & Đầm</a></li>
+                                    <li><a href="#">Tất Cả Túi</a></li>
+                                    <li><a href="#">Tất</a></li>
+                                    <li><a href="#">Mũ Lưỡi Trai & Đội Đầu</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-menu-column promo-column">
-                                <a href="#">
-                                    <img src="https://i.ibb.co/k2PKnWx5/french-women-adidas-sneakers-307923-1687375452321-main.jpg" alt="Promo">
-                                    <span class="promo-text">SAMBA REIMAGINED</span>
-                                </a>
+                            <div class="mega-menu-column">
+                                <h4>Thể Thao Nữ</h4>
+                                <ul>
+                                    <li><a href="#">Chạy</a></li>
+                                    <li><a href="#">Tập luyện</a></li>
+                                    <li><a href="#">Tập Yoga</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -150,8 +174,7 @@
                 <button id="search-button"><i class="fa fa-search"></i></button>
             </div>
             <div class="cart">
-                <a href="#">
-                    <i class="fas fa-shopping-cart"></i>
+                <a href="@Url.Action("Cart", "Home")"> <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </a>
             </div>
@@ -174,18 +197,32 @@
                     <h4>SẢN PHẨM</h4>
                     <ul>
                         <li><a href="#">Giày</a></li>
-                        <li><a href="#">Quần áo</a></li>
-                        <li><a href="#">Phụ kiện</a></li>
+                        <li><a href="#">Tất Cả Giày</a></li>
                         <li><a href="#">Hàng Mới Về</a></li>
+                        <li><a href="#">Giảm Giá</a></li>
+                        <li><a href="#">Độc quyền hội viên</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>THỂ THAO</h4>
                     <ul>
                         <li><a href="#">Chạy</a></li>
-                        <li><a href="#">Gym & Training</a></li>
+                        <li><a href="#">Tập luyện</a></li>
                         <li><a href="#">Bóng đá</a></li>
                         <li><a href="#">Bóng Rổ</a></li>
+                        <li><a href="#">Tennis</a></li>
+                        <li><a href="#">Bơi lội</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>BỘ SƯU TẬP</h4>
+                    <ul>
+                        <li><a href="#">Originals</a></li>
+                        <li><a href="#">Ultraboost</a></li>
+                        <li><a href="#">NMD</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Gazelle</a></li>
+                        <li><a href="#">Stan Smith</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -194,6 +231,7 @@
                         <li><a href="#">Giới Thiệu Về Chúng Tôi</a></li>
                         <li><a href="#">Cơ Hội Nghề Nghiệp</a></li>
                         <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">adidas Stories</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -203,26 +241,36 @@
                         <li><a href="#">Giao Hàng</a></li>
                         <li><a href="#">Trả Hàng & Hoàn Tiền</a></li>
                         <li><a href="#">Khuyến mãi</a></li>
+                        <li><a href="#">Trợ Giúp Dịch Vụ Khách Hàng</a></li>
                     </ul>
+                    <div class="bct-logo">
+                        <img src="https://i.ibb.co/rRZ5YSzT/logo-congthuong.png" alt="Logo Bộ Công Thương">
+                    </div>
                 </div>
-                <div class="footer-column">
+                <div class="footer-column social-media-column">
                     <h4>THEO DÕI CHÚNG TÔI</h4>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-legal">
                 <p>&copy; @DateTime.Now.Year - AD-Store. All Rights Reserved.</p>
+                <ul>
+                    <li><a href="#">Cài Đặt Cookie</a></li>
+                    <li><a href="#">Chính sách Bảo mật</a></li>
+                    <li><a href="#">Điều khoản và Điều kiện</a></li>
+                    <li><a href="#">Xuất bản bởi AD-Store</a></li>
+                </ul>
             </div>
         </div>
     </footer>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script> <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

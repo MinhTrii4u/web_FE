@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<web_FE.Models.Product>
+@using System.Linq
+@{
     ViewBag.Title = "Trang Chủ";
 }
 
@@ -18,36 +20,16 @@
 
             <div class="product-carousel-wrapper">
                 <div class="product-grid">
-                    <div class="product-item">
-                        <img src="https://i.ibb.co/d4zQqdLs/download.jpg" alt="Giày 1">
-                        <h3>Adidas Superstar XLG</h3>
-                        <p class="price">2.800.000₫</p>
-                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://i.ibb.co/rf5vXPQy/download-1.jpg" alt="Giày 2">
-                        <h3>Adidas Samba OG</h3>
-                        <p class="price">3.200.000₫</p>
-                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://i.ibb.co/9H9RN6Kp/download-4.jpg" alt="Adidas Forum Low">
-                        <h3>Adidas Forum Low</h3>
-                        <p class="price">2.600.000₫</p>
-                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://i.ibb.co/6JwXxBF3/download-3.jpg" alt="Adidas Gazelle">
-                        <h3>Adidas Gazelle</h3>
-                        <p class="price">2.750.000₫</p>
-                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://i.ibb.co/9HJtHpLz/Giay-Adidas-Originals-Prophere-Grey-ID0542.png" alt="Adidas NMD_R1">
-                        <h3>Adidas NMD_R1</h3>
-                        <p class="price">3.600.000₫</p>
-                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-                    </div>
+
+                    @foreach (var product in Model.Take(5)) // Chỉ lấy 5 sản phẩm đầu làm nổi bật
+                    {
+                        <div class="product-item">
+                            <img src="@product.ImageUrl" alt="@product.Name">
+                            <h3>@product.Name</h3>
+                            <p class="price">@product.Price.ToString("N0")₫</p>
+                            <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                        </div>
+                    }
                 </div>
             </div>
 
@@ -82,7 +64,7 @@
             </div>
             <div class="kit-item">
                 <a href="#" class="kit-image-wrapper">
-                    <img src="https://i.ibb.co/tMnhvjLL/Real-Madrid-25-26-Long-Sleeve-Home-Authentic-Jersey-White-JN8866-HM1.jpg" alt="Man Utd Kit">
+                    <img src="https://i.ibb.co/WWwKPhVD/Ao-djau-san-nha-chinh-hang-Manchester-United-mua-giai-25-26-DJo-JI7429-HM1.jpg" alt="Man Utd Kit">
                     <h3 class="kit-overlay-text">Man Utd</h3>
                 </a>
                 <div class="kit-info">
@@ -93,7 +75,7 @@
             </div>
             <div class="kit-item">
                 <a href="#" class="kit-image-wrapper">
-                    <img src="" alt="Arsenal Kit">
+                    <img src="https://i.ibb.co/DHwfbWYw/Ao-djau-san-nha-Arsenal-mua-giai-2025-2026-chinh-hang-DJo-JI9516-HM1.jpg" alt="Arsenal Kit">
                     <h3 class="kit-overlay-text">Arsenal</h3>
                 </a>
                 <div class="kit-info">
@@ -102,6 +84,29 @@
                     <a href="#" class="buy-now-link">Mua ngay</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <h2>TẤT CẢ SẢN PHẨM</h2>
+        <div class="product-grid">
+
+            @foreach (var product in Model) // Lặp qua toàn bộ danh sách
+            {
+                <div class="product-item">
+                    <a href="#">
+                        <div class="product-image">
+                            <img src="@product.ImageUrl" alt="@product.Name">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-brand">@product.Brand</span>
+                            <h3 class="product-name">@product.Name</h3>
+                            <p class="product-price">@product.Price.ToString("N0")₫</p>
+                        </div>
+                    </a>
+                    <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                </div>
+            }
         </div>
     </section>
 

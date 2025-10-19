@@ -1,0 +1,47 @@
+﻿@model web_FE.Models.User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Tài Khoản Của Tôi";
+}
+
+<div class="container account-page">
+    <div class="account-wrap">
+        <aside class="sidebar">
+            <h3>Tài khoản của tôi</h3>
+            <ul>
+                <li class="active"><a href="@Url.Action("Account", "Account")">Thông tin cá nhân</a></li>
+                <li><a href="@Url.Action("Orders", "Account")">Lịch sử mua hàng</a></li>
+                <li><a href="@Url.Action("Logout", "Account")">Đăng xuất</a></li>
+            </ul>
+        </aside>
+
+        <section class="main-content">
+            <h2>Thông tin cá nhân</h2>
+
+            @if (ViewBag.Msg != null)
+            {
+                <div class="msg success">@ViewBag.Msg</div>
+            }
+
+            <form method="post" action="@Url.Action("UpdateProfile", "Account")" class="edit-form">
+                <div class="form-group">
+                    <label for="name">Họ và Tên:</label>
+                    <input type="text" id="name" name="name" value="@Model.Name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="@Model.Email" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="text" id="phone" name="phone" value="@Model.Phone" />
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="address" name="address" value="@Model.Address" />
+                </div>
+                <button type="submit" class="save-profile-btn">Lưu thay đổi</button>
+            </form>
+        </section>
+    </div>
+</div>
