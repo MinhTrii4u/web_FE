@@ -21,7 +21,7 @@
             <div class="product-carousel-wrapper">
                 <div class="product-grid">
 
-                    @foreach (var product in Model.Take(5)) // Chỉ lấy 5 sản phẩm đầu làm nổi bật
+                    @foreach (var product in Model.Take(5)) 
                     {
                         <div class="product-item">
                             <img src="@product.ImageUrl" alt="@product.Name">
@@ -91,7 +91,7 @@
         <h2>TẤT CẢ SẢN PHẨM</h2>
         <div class="product-grid">
 
-            @foreach (var product in Model) // Lặp qua toàn bộ danh sách
+            @foreach (var product in Model) 
             {
                 <div class="product-item">
                     <a href="#">

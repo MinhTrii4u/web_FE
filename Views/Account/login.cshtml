@@ -7,13 +7,13 @@
     <div class="login-box">
         <h1>Đăng Nhập</h1>
 
-        @* Hiển thị thông báo lỗi nếu có *@
+        @*  *@
         @if (ViewBag.Error != null)
         {
             <div class="msg error">@ViewBag.Error</div>
         }
 
-        @* Form đăng nhập *@
+        @*  *@
         <form method="post" action="@Url.Action("Login", "Account")">
             <div class="form-group">
                 <label for="email">Địa chỉ email <span class="required">*</span></label>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<web_FE.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh Mục Sản Phẩm";
+}
+
+<div class="container category-page">
+    <header class="category-header">
+        <h1>Giày Nam</h1> <p>Hiển thị @Model.Count() sản phẩm</p>
+    </header>
+
+    <div class="category-content-wrap">
+        <aside class="category-sidebar">
+            <h4>Lọc Theo</h4>
+            <div class="filter-group">
+                <h5>Size</h5>
+                <div class="filter-options">
+                    <label><input type="checkbox" name="size" value="38"> 38</label>
+                    <label><input type="checkbox" name="size" value="39"> 39</label>
+                    <label><input type="checkbox" name="size" value="40"> 40</label>
+                    <label><input type="checkbox" name="size" value="41"> 41</label>
+                    <label><input type="checkbox" name="size" value="42"> 42</label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h5>Giá</h5>
+                <div class="filter-options">
+                    <label><input type="radio" name="price" value="1"> Dưới 1.000.000₫</label>
+                    <label><input type="radio" name="price" value="2"> 1.000.000₫ - 3.000.000₫</label>
+                    <label><input type="radio" name="price" value="3"> Trên 3.000.000₫</label>
+                </div>
+            </div>
+            <button class="filter-apply-btn">Áp Dụng</button>
+        </aside>
+
+        <main class="category-products">
+            <div class="product-grid">
+                @foreach (var product in Model)
+                {
+                    <div class="product-item">
+                        <a href="@Url.Action("Detail", "Home", new { id = product.Id })">
+                            <div class="product-image">
+                                <img src="@product.ImageUrl" alt="@product.Name">
+                            </div>
+                            <div class="product-info">
+                                <span class="product-brand">@product.Brand</span>
+                                <h3 class="product-name">@product.Name</h3>
+                                <p class="product-price">@product.Price.ToString("N0")₫</p>
+                            </div>
+                        </a>
+                        <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                    </div>
+                }
+            </div>
+        </main>
+    </div>
+</div>

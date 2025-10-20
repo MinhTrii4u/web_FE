@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Mã đơn hàng: #@ViewBag.OrderId</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Thông tin khách hàng</strong>
+        <p>
+            Tên khách hàng: Lã Minh Trí <br>
+            Email: laminhtri197@gmail.com <br>
+            Số điện thoại: 0765413705
+        </p>
+    </div>
+    <div class="col-md-6">
+        <strong>Địa chỉ giao hàng</strong>
+        <p>
+            HaDo đường 3 tháng 2 <br> <br>
+            Trạng thái: <span classF="badge badge-success" style="color: green; font-weight: bold;">Đã giao hàng</span>
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<h4>Các sản phẩm đã mua</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="httpsG://i.ibb.co/d4zQqdLs/download.jpg" alt="Sản phẩm" style="width: 60px; height: 60px; object-fit: cover;" /></td>
+            <td>Adidas Superstar XLG</td>
+            <td>1</td>
+            <td>2.800.000₫</td>
+            <td>2.800.000₫</td>
+        </tr>
+        <tr>
+            <td><img src="httpsG://i.ibb.co/rf5vXPQy/download-1.jpg" alt="Sản phẩm" style="width: 60px; height: 60px; object-fit: cover;" /></td>
+            <td>Adidas Samba OG</td>
+            <td>1</td>
+            <td>3.200.000₫</td>
+            <td>3.200.000₫</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right"><strong>Tạm tính:</strong></td>
+            <td>6.000.000₫</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right"><strong>Phí vận chuyển:</strong></td>
+            <td>30.000₫</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
+            <td><strong>6.030.000₫</strong></td>
+        </tr>
+    </tfoot>
+</table>

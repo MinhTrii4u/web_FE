@@ -34,23 +34,23 @@ $(document).ready(function () {
         });
     }
 
-    // --- LOGIC SLIDER BANNER (Giữ nguyên) ---
+    
     let currentSlide = 0;
     const slides = $('.slide');
     const dots = $('.dot');
     const totalSlides = slides.length;
     let slideInterval;
-    function showSlide(index) { /* ... code showSlide ... */ }
-    function nextSlide() { /* ... code nextSlide ... */ }
-    function prevSlide() { /* ... code prevSlide ... */ }
-    function startSlider() { /* ... code startSlider ... */ }
-    function stopSlider() { /* ... code stopSlider ... */ }
+    function showSlide(index) { }
+    function nextSlide() {  }
+    function prevSlide() {  }
+    function startSlider() {  }
+    function stopSlider() {  }
     if (slides.length > 0) {
-        // Gán sự kiện cho nút và dấu chấm
+      
         $('.slider-control.next').on('click', function () { stopSlider(); nextSlide(); startSlider(); });
         $('.slider-control.prev').on('click', function () { stopSlider(); prevSlide(); startSlider(); });
         $('.dot').on('click', function () { stopSlider(); showSlide($(this).data('slide')); startSlider(); });
-        // Khởi động
+        
         showSlide(0);
         startSlider();
         $('.slider').on('mouseenter', stopSlider).on('mouseleave', startSlider);

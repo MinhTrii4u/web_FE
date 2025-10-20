@@ -121,5 +121,19 @@ namespace web_FE.Controllers
             Session.Clear(); // XÓA SESSION
             return RedirectToAction("Index", "Home"); // Về trang chủ
         }
+        public ActionResult OrderDetail(int? id) 
+        {
+            
+            if (id == null)
+            {
+                
+                return RedirectToAction("Orders");
+            }
+
+            
+            ViewBag.OrderId = id.Value;
+
+            return View();
+        }
     }
 }

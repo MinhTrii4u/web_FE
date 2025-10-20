@@ -62,7 +62,7 @@ h2 {
     }
 
 
-/* --- 1. HEADER --- */
+
 header {
     background: #fff;
     color: #333;
@@ -564,12 +564,13 @@ footer {
         color: #000;
     }
 
+/* Bố cục 6 cột */
 .footer-main {
-    display: grid; /* Sử dụng Grid cho dễ quản lý cột */
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Tự động chia cột linh hoạt */
     gap: 2rem; /* Khoảng cách giữa các cột */
     padding-bottom: 3rem;
-    align-items: start;
+    align-items: start; /* Căn các cột theo lề trên */
 }
 
 .footer-column {
@@ -583,6 +584,8 @@ footer {
         font-weight: 700;
         color: #fff; /* Đảm bảo màu trắng */
     }
+
+    /* Bỏ CSS cho .footer-category-img (ảnh cũ) */
 
     .footer-column ul {
         list-style: none;
@@ -603,6 +606,74 @@ footer {
                     color: #fff;
                     text-decoration: underline;
                 }
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép icon xuống hàng nếu không đủ chỗ */
+    gap: 1.2rem; /* Khoảng cách icon lớn hơn */
+    margin-top: 0;
+}
+
+    .social-icons a {
+        color: #a2a2a2; /* Icon màu xám nhạt */
+        font-size: 1.3rem; /* Icon nhỏ hơn */
+        transition: color 0.3s ease;
+    }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+.bct-logo {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+    .bct-logo img {
+        max-width: 100px;
+        height: auto;
+        opacity: 0.8;
+    }
+
+.footer-legal {
+    background-color: #000;
+    border-top: 1px solid #333;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+    .footer-legal p { /* Dòng copyright */
+        color: #777;
+        font-size: 0.75rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-legal ul { /* Các link pháp lý */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+    }
+
+        .footer-legal ul li a {
+            color: #a2a2a2;
+            font-size: 0.75rem;
+            border-right: 1px solid #555; /* Đường kẻ ngăn cách */
+            padding-right: 1.5rem;
+        }
+
+        .footer-legal ul li:last-child a {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-legal ul li a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
 
     .footer-column p { /* CSS cho thông tin cửa hàng */
         color: #a2a2a2;
@@ -687,23 +758,23 @@ footer {
         }
 
 
-/* --- MEGA MENU (ĐÃ SỬA LẠI BỐ CỤC) --- */
+
 .main-menu .has-megamenu {
-    position: static; /* Quan trọng: Giữ header ổn định */
+    position: static;
 }
 
     .main-menu .has-megamenu > a {
-        padding-bottom: 2rem; /* Tạo khoảng trống cho gạch chân */
+        padding-bottom: 2rem; 
         position: relative;
-        display: inline-block; /* Cần cho ::after */
+        display: inline-block; 
     }
 
-        /* Gạch chân giả khi hover */
+        
         .main-menu .has-megamenu > a::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: 0; /* Đặt sát đáy */
+            bottom: 0;
             width: 100%;
             height: 3px;
             background-color: black;
@@ -717,45 +788,44 @@ footer {
         transform-origin: bottom left;
     }
 
-/* Khung Mega Menu chính */
+
 .mega-menu {
-    display: none; /* Ẩn mặc định */
-    position: absolute; /* Định vị tuyệt đối so với header */
-    top: 100%; /* Ngay dưới header */
+    display: none; 
+    position: absolute; 
+    top: 100%; 
     left: 0;
-    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    width: 100%;
     background-color: #fff;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    padding: 2.5rem 5%; /* Padding bên trong */
-    z-index: 1001; /* Nằm trên cùng */
+    padding: 2.5rem 5%; 
+    z-index: 1001; 
     border-top: 1px solid #e5e5e5;
-    text-align: left; /* Đảm bảo chữ căn trái */
+    text-align: left; 
 }
 
-/* Hiện menu khi hover vào LI cha */
+
 .main-menu .has-megamenu:hover .mega-menu {
     display: block;
 }
 
-/* Container chứa các cột */
+
 .mega-menu-inner {
-    display: flex; /* BẮT BUỘC: Dùng Flexbox để chia cột */
-    justify-content: flex-start; /* Các cột bắt đầu từ bên trái */
-    gap: 5%; /* Khoảng cách giữa các cột */
-    max-width: 1200px; /* Giới hạn chiều rộng nội dung */
-    margin: 0 auto; /* Căn giữa nội dung bên trong mega-menu */
+    display: flex; 
+    justify-content: flex-start; 
+    gap: 5%; 
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
-/* Định dạng cho từng cột */
+
 .mega-menu-column {
-    flex: 1; /* Các cột chữ tự chia sẻ không gian */
-    min-width: 150px; /* Chiều rộng tối thiểu */
-    /* Quan trọng: KHÔNG đặt display: flex ở đây nếu không cần thiết */
+    flex: 1; 
+    min-width: 150px; 
+   
 }
 
-    /* Cột ảnh quảng cáo (nếu có) */
     .mega-menu-column.promo-column {
-        flex: 0 0 200px; /* Chiều rộng cố định */
+        flex: 0 0 200px; 
         text-align: center;
     }
 
@@ -773,39 +843,38 @@ footer {
             color: #333;
         }
 
-    /* Tiêu đề cột */
     .mega-menu-column h4 {
-        font-size: 0.95rem; /* Tiêu đề to hơn chút */
-        margin-bottom: 1.2rem; /* Khoảng cách với link */
+        font-size: 0.95rem; 
+        margin-bottom: 1.2rem; 
         text-transform: uppercase;
         font-weight: 700;
         color: #111;
     }
 
-    /* Danh sách link trong cột */
+   
     .mega-menu-column ul {
         list-style: none;
-        padding-left: 0; /* Xóa thụt đầu dòng mặc định */
+        padding-left: 0; 
     }
 
         .mega-menu-column ul li {
-            margin-bottom: 0.7rem; /* Giảm khoảng cách link */
-            padding: 0; /* Xóa padding mặc định */
+            margin-bottom: 0.7rem; 
+            padding: 0; 
         }
 
             .mega-menu-column ul li a {
-                color: #555; /* Màu chữ link */
+                color: #555; 
                 font-weight: 400;
-                font-size: 0.9rem; /* Cỡ chữ link */
+                font-size: 0.9rem; 
                 transition: color 0.3s ease;
-                display: block; /* Giúp dễ click */
-                white-space: normal; /* Cho phép chữ dài xuống dòng */
-                line-height: 1.4; /* Tăng khoảng cách dòng nếu chữ xuống dòng */
+                display: block; 
+                white-space: normal; 
+                line-height: 1.4; 
             }
 
                 .mega-menu-column ul li a:hover {
-                    color: #000; /* Màu đen khi hover */
-                    text-decoration: none; /* Bỏ gạch chân */
+                    color: #000; 
+                    text-decoration: none;
                 }
 
 
@@ -1478,3 +1547,104 @@ input#quantity {
     text-align: center;
     font-size: 0.9rem;
 }
+/* --- CSS CHO TRANG DANH MỤC (CATEGORY) --- */
+.category-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1.5rem;
+}
+
+    .category-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .category-header p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+.category-content-wrap {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Sidebar Lọc */
+.category-sidebar {
+    flex: 0 0 250px; /* Chiều rộng cố định 250px */
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+    .category-sidebar h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+    }
+
+.filter-group {
+    margin-bottom: 2rem;
+}
+
+    .filter-group h5 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+.filter-options label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.filter-options input {
+    margin-right: 8px;
+}
+
+.filter-apply-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+    .filter-apply-btn:hover {
+        background-color: #333;
+    }
+
+
+.category-products {
+    flex: 1; 
+}
+
+   
+    .category-products .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+        gap: 1.5rem;
+    }
+   
+    .category-products .product-item {
+     
+    }
