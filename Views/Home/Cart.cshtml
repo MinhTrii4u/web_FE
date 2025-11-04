@@ -1,6 +1,6 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
-    ViewBag.Title = "Giỏ Hàng Của Bạn"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Giỏ Hàng Của Bạn";
 }
 
 <div class="container cart-page-container">
@@ -55,6 +55,6 @@
         <div class="cart-total">
             <strong>Tổng cộng: <span id="totalPrice">9.200.000₫</span></strong>
         </div>
-        <a href="#" class="checkout-btn">Thanh Toán</a>
+        <a href="@Url.Action("Checkout", "Home")" class="checkout-btn">Thanh Toán</a>
     </div>
 </div>

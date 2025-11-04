@@ -2,87 +2,108 @@
     ViewBag.Title = "Thanh toán";
 }
 
-<h2>@ViewBag.Title</h2>
-<hr />
+@using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
+{
+    <div class="container checkout-page-container">
+        <div class="checkout-main-layout">
 
-<div class="row">
-    <div class="col-md-7">
-        <h3>Thông tin giao hàng</h3>
-        <form action="/Home/Checkout" method="post">
-            <div class="form-group">
-                <label for="FullName">Họ và tên</label>
-                <input type="text" class="form-control" id="FullName" placeholder="Nhập họ tên của bạn">
+            <div class="checkout-form-column">
+
+                <div class="checkout-box">
+                    <h3>Thông tin giao hàng</h3>
+                    <div class="form-group">
+                        <label for="FullName">Họ và tên <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="FullName" name="FullName" placeholder="Nhập họ tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" name="Email" placeholder="vidu@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Số điện thoại <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Số điện thoại nhận hàng" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Địa chỉ <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="Address" name="Address" placeholder="Số nhà, tên đường, phường/xã..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Notes">Ghi chú (tùy chọn)</label>
+                        <textarea class="form-control" id="Notes" name="Notes" rows="3" placeholder="Ghi chú thêm về đơn hàng..."></textarea>
+                    </div>
+                </div>
+
+                <div class="checkout-box">
+                    <h3>Phương thức thanh toán</h3>
+
+                    <div class="payment-option form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" checked>
+                        <label class="form-check-label" for="cod">
+                            <i class="fas fa-truck"></i>
+                            Thanh toán khi nhận hàng (COD)
+                        </label>
+                    </div>
+                    <div class="payment-option form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="bank" value="bank">
+                        <label class="form-check-label" for="bank">
+                            <i class="fas fa-university"></i>
+                            Chuyển khoản ngân hàng
+                        </label>
+                    </div>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email" placeholder="vidu@gmail.com">
+
+            <div class="checkout-summary-column">
+                <div class="checkout-box summary-box">
+                    <h3>Đơn hàng của bạn</h3>
+
+                    <div class="summary-item">
+                        <img src="https://i.ibb.co/d4zQqdLs/download.jpg" alt="Sản phẩm A" />
+                        <div class="item-details">
+                            <span class="item-name">Adidas Superstar XLG</span>
+                            <span class="item-qty">Số lượng: 1</span>
+                        </div>
+                        <span class="item-price">2.800.000₫</span>
+                    </div>
+                    <div class="summary-item">
+                        <img src="https://i.ibb.co/rf5vXPQy/download-1.jpg" alt="Sản phẩm B" />
+                        <div class="item-details">
+                            <span class="item-name">Adidas Samba OG</span>
+                            <span class="item-qty">Số lượng: 2</span>
+                        </div>
+                        <span class="item-price">6.400.000₫</span>
+                    </div>
+
+                    <hr class="summary-hr">
+
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <strong>9.200.000₫</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Phí vận chuyển</span>
+                        <strong>30.000₫</strong>
+                    </div>
+
+                    <hr class="summary-hr">
+
+                    <div class="summary-total">
+                        <strong>Tổng cộng</strong>
+                        <strong>9.230.000₫</strong>
+                    </div>
+
+                    <button type="submit" class="btn-place-order">ĐẶT HÀNG</button>
+
+                    <div class="payment-icons">
+                        <p>Phương thức thanh toán được chấp nhận:</p>
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fas fa-money-bill-wave" title="Tiền mặt (COD)"></i>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Phone">Số điện thoại</label>
-                <input type="text" class="form-control" id="Phone" placeholder="Số điện thoại nhận hàng">
-            </div>
-            <div class="form-group">
-                <label for="Address">Địa chỉ</label>
-                <input type="text" class="form-control" id="Address" placeholder="Số nhà, tên đường, phường/xã...">
-            </div>
-            <div class="form-group">
-                <label for="Notes">Ghi chú (tùy chọn)</label>
-                <textarea class="form-control" id="Notes" rows="3"></textarea>
-            </div>
-        </form>
-    </div>
 
-    <div class="col-md-5">
-        <h3>Đơn hàng của bạn</h3>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Tóm tắt</h5>
-
-                <div class="d-flex justify-content-between">
-                    <span>Tên sản phẩm A x 1</span>
-                    <span>2.800.000₫</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <span>Tên sản phẩm B x 2</span>
-                    <span>6.400.000₫</span>
-                </div>
-
-                <hr>
-
-                <div class="d-flex justify-content-between">
-                    <strong>Tạm tính</strong>
-                    <strong>9.200.000₫</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <small>Phí vận chuyển</small>
-                    <small>30.000₫</small>
-                </div>
-
-                <hr>
-
-                <div class="d-flex justify-content-between h4">
-                    <strong>Tổng cộng</strong>
-                    <strong>9.230.000₫</strong>
-                </div>
-
-                <hr>
-
-                <h4>Phương thức thanh toán</h4>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" checked>
-                    <label class="form-check-label" for="cod">
-                        Thanh toán khi nhận hàng (COD)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="bank" value="bank">
-                    <label class="form-check-label" for="bank">
-                        Chuyển khoản ngân hàng
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block mt-3" style="width: 100%;">ĐẶT HÀNG</button>
-            </div>
         </div>
     </div>
-</div>
+}

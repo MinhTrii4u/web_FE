@@ -1,4 +1,4 @@
-﻿@using web_FE.Models 
+﻿@using web_FE.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +13,100 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        /* Kiểu cho thông báo thành công (Toast Notification) */
+        #success-toast {
+            position: fixed;
+            top: 80px; /* Dưới header (giả sử header cao 60-70px) */
+            right: 20px;
+            background-color: #28a745; /* Màu xanh lá cây thành công */
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 400px;
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideIn 0.5s forwards;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+        }
+
+            .toast-content .fa-check-circle {
+                font-size: 1.5rem;
+                margin-right: 15px;
+            }
+
+            .toast-content span {
+                font-size: 0.95rem;
+                font-weight: 500;
+                line-height: 1.4;
+            }
+
+        #toast-close {
+            background: none;
+            border: none;
+            color: white;
+            opacity: 0.7;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0 0 0 15px;
+            line-height: 1;
+        }
+
+            #toast-close:hover {
+                opacity: 1;
+            }
+
+        /* Animation
+           ===== LỖI ĐÃ ĐƯỢC SỬA TẠI ĐÂY (THÊM @@) =====
+        */
+        @@keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        #success-toast.fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+    </style>
 </head>
 <body>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="success-toast">
+            <div class="toast-content">
+                <i class="fas fa-check-circle"></i>
+                <span>@TempData["SuccessMessage"]</span>
+            </div>
+            <button id="toast-close">&times;</button>
+        </div>
+    }
     @{
         var user = Session["user"] as User;
     }
@@ -27,12 +119,12 @@
                 <a href="#">Trợ giúp</a>
                 <a href="@Url.Action("Orders", "Account")">Đơn hàng của tôi</a>
 
-                @if (user != null) // Nếu đã đăng nhập
+                @if (user != null)
                 {
                     <a href="@Url.Action("Account", "Account")">Xin chào, @user.Name</a>
                     <a href="@Url.Action("Logout", "Account")">Đăng xuất</a>
                 }
-                else // Nếu chưa đăng nhập
+                else
                 {
                     <a href="@Url.Action("Login", "Account")">Đăng ký/Đăng nhập</a>
                 }
@@ -47,7 +139,7 @@
         </div>
 
         <nav class="main-menu">
-             <ul>
+            <ul>
                 <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
 
                 <li class="has-megamenu">
@@ -173,7 +265,8 @@
                 <button id="search-button"><i class="fa fa-search"></i></button>
             </div>
             <div class="cart">
-                <a href="@Url.Action("Cart", "Home")"> <i class="fas fa-shopping-cart"></i>
+                <a href="@Url.Action("Cart", "Home")">
+                    <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </a>
             </div>
@@ -278,6 +371,36 @@
         </div>
     </footer>
 
-    <script src="~/Scripts/jquery-3.7.0.min.js"></script> <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 1. Tìm phần tử thông báo
+            var toast = $('#success-toast');
+
+            // 2. Nếu phần tử đó tồn tại (nghĩa là TempData có tin nhắn)
+            if (toast.length) {
+
+                // Hàm để đóng thông báo
+                function closeToast() {
+                    toast.addClass('fade-out');
+                    // Xóa phần tử khỏi DOM sau khi animation kết thúc (0.5s)
+                    setTimeout(function () {
+                        toast.remove();
+                    }, 500);
+                }
+
+                // 3. Tự động đóng sau 5 giây (5000ms)
+                var autoCloseTimer = setTimeout(closeToast, 5000);
+
+                // 4. Cho phép người dùng tự đóng khi nhấn nút 'x'
+                $('#toast-close').on('click', function () {
+                    clearTimeout(autoCloseTimer); // Dừng việc tự động đóng
+                    closeToast();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
